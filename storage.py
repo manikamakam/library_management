@@ -1,21 +1,3 @@
-# import json
-
-# class Storage:
-#     def __init__(self, filename):
-#         self.filename = filename
-
-#     def load_data(self, cls):
-#         try:
-#             with open(self.filename, 'r') as file:
-#                 data = json.load(file)
-#                 return {key: cls.from_dict(value) for key, value in data.items()}
-#         except FileNotFoundError:
-#             return {}
-
-#     def save_data(self, data):
-#         with open(self.filename, 'w') as file:
-#             json.dump({key: value.to_dict() for key, value in data.items()}, file, indent=4)
-
 import json
 import os
 
