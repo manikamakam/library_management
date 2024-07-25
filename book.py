@@ -2,11 +2,23 @@ from models import Book
 from storage import Storage
 
 class BookManager:
+    """
+    Manages books in the library.
+    """
     def __init__(self, storage_file="books.json"):
+        """
+        Initializes the BookManager with a storage instance.
+
+        Args:
+            storage_file (str): The name of the file for storing books data.
+        """
         self.storage = Storage(storage_file)
         self.books = self.storage.load_data(Book)
 
     def manage_books(self):
+        """
+        Provides a menu to manage books and prompts required input from user.
+        """
         while True:
             print("````````````````````````````````````````````````````````````````````````")
             print("Book Management")
@@ -42,6 +54,9 @@ class BookManager:
                 print("Invalid choice. Please try again.")
 
     def add_book(self, title, author, isbn):
+        """
+        Adds a new book with provided details.
+        """
         if isbn in self.books:
             print("Book with this ISBN already exists. Please choose a different ISBN.")
             return
@@ -51,6 +66,9 @@ class BookManager:
         print("Book added successfully.")
 
     def update_book(self, isbn, title=None, author=None):
+        """
+        Updates a book with provided details if the book exists.
+        """
         book = self.get_book_by_isbn(isbn)
         if book:
             if title:
@@ -64,6 +82,9 @@ class BookManager:
             print("Book not found.")
 
     def delete_book(self, isbn):
+        """
+        Deletes the specific book if it exists.
+        """
         if isbn in self.books:
             del self.books[isbn]
             self.storage.save_data(self.books)
@@ -72,10 +93,16 @@ class BookManager:
             print("Book not found.")
 
     def list_books(self):
+        """
+        Lists all the books.
+        """
         for book in self.books.values():
             print(book)
 
     def search_book(self, search_term):
+        """
+        Searches a book by ISBN, title or author.
+        """
         book = self.get_book_by_isbn(search_term)
         if book:
             print(book)
@@ -89,11 +116,20 @@ class BookManager:
                 print("Book not found.")
 
     def get_book_by_isbn(self, isbn):
+        """
+        Searches a book by ISBN.
+        """
         return self.books.get(isbn)
 
     def get_books_by_title(self, title):
+        """
+        Searches a book by title.
+        """
         return [book for book in self.books.values() if book.title.lower() == title.lower()]
 
     def get_books_by_author(self, author):
+        """
+        Searches a book by author.
+        """
         return [book for book in self.books.values() if book.author.lower() == author.lower()]
 

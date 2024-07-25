@@ -3,6 +3,9 @@ from user import UserManager
 from check import CheckManager
 
 def main():
+    """
+    Main function to run the Library Management System.
+    """
     book_manager = BookManager()
     user_manager = UserManager()
     check_manager = CheckManager(book_manager, user_manager)

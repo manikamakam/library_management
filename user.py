@@ -2,11 +2,23 @@ from models import User
 from storage import Storage
 
 class UserManager:
+    """
+    Manages users in the library.
+    """
     def __init__(self):
+        """
+        Initializes the UserManager with a storage instance.
+
+        Args:
+            storage (Storage): Singleton Storage instance.
+        """
         self.storage = Storage("users.json")
         self.users = self.storage.load_data(User)
 
     def manage_users(self):
+        """
+        Provides a menu to manage users and prompts required input from user.
+        """
         while True:
             print("````````````````````````````````````````````````````````````````````````")
             print("User Management")
@@ -40,6 +52,9 @@ class UserManager:
                 print("Invalid choice. Please try again.")
 
     def add_user(self, name, user_id):
+        """
+        Adds a new user with provided details.
+        """
         if user_id in self.users:
             print("User with this ID already exists. Please choose a different ID.")
             return
@@ -49,6 +64,9 @@ class UserManager:
         print("User added successfully.")
 
     def update_user(self, user_id, name=None):
+        """
+        Updates a user with provided details if the user exists.
+        """
         user = self.get_user_by_id(user_id)
         if user:
             if name:
@@ -60,6 +78,9 @@ class UserManager:
             print("User not found.")
 
     def delete_user(self, user_id):
+        """
+        Deletes the specific user if it exists.
+        """
         if user_id in self.users:
             del self.users[user_id]
             self.storage.save_data(self.users)
@@ -68,10 +89,16 @@ class UserManager:
             print("User not found.")
 
     def list_users(self):
+        """
+        Lists all the users.
+        """
         for user in self.users.values():
             print(user)
 
     def search_user(self, search_term):
+        """
+        Searches a user by ID or name.
+        """
         user = self.get_user_by_id(search_term)
         if user:
             print(user)
@@ -84,7 +111,13 @@ class UserManager:
                 print("User not found.")
 
     def get_user_by_id(self, user_id):
+        """
+        Searches a user by ID.
+        """
         return self.users.get(user_id)
 
     def get_users_by_name(self, name):
+        """
+        Searches a user by name.
+        """
         return [user for user in self.users.values() if user.name.lower() == name.lower()]

@@ -1,11 +1,22 @@
-from models import Book, User
-
 class CheckManager:
+    """
+    Manages the checking in and out of books.
+    """
     def __init__(self, book_manager, user_manager):
+        """
+        Initializes CheckManager with book and user managers.
+
+        Args:
+            book_manager (BookManager): Instance of BookManager.
+            user_manager (UserManager): Instance of UserManager.
+        """
         self.book_manager = book_manager
         self.user_manager = user_manager
 
     def check_out_book(self, user_id, book_isbn):
+        """
+        Checks out a book to a user and updates the book availability in books.json.
+        """
         user = self.user_manager.get_user_by_id(user_id)
         book = self.book_manager.get_book_by_isbn(book_isbn)
 
@@ -18,6 +29,9 @@ class CheckManager:
             print("Cannot check out book. Either user or book is invalid, or book is not available.")
 
     def check_in_book(self, book_isbn):
+        """
+        Checks in a book and updates the book availability in books.json.
+        """
         book = self.book_manager.get_book_by_isbn(book_isbn)
 
         if book and not book.is_available():
