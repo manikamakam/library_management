@@ -1,0 +1,50 @@
+{
+    "1": {
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K Rowling",
+        "isbn": "1",
+        "checked_out_to": "1"
+    },
+    "2": {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K Rowling",
+        "isbn": "2",
+        "checked_out_to": null
+    },
+    "3": {
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "author": "J.K Rowling",
+        "isbn": "3",
+        "checked_out_to": null
+    },
+    "4": {
+        "title": "Harry Potter and the Goblet of Fire",
+        "author": "J.K Rowling",
+        "isbn": "4",
+        "checked_out_to": "2"
+    },
+    "5": {
+        "title": "Harry Potter and the Order of the Phoenix",
+        "author": "J.K Rowling",
+        "isbn": "5",
+        "checked_out_to": null
+    },
+    "6": {
+        "title": "Harry Potter and the Half-Blood Prince",
+        "author": "J.K Rowling",
+        "isbn": "6",
+        "checked_out_to": null
+    },
+    "7": {
+        "title": "Harry Potter and the Deathly Hallows",
+        "author": "J.K Rowling",
+        "isbn": "7",
+        "checked_out_to": null
+    },
+    "8": {
+        "title": "Harry Potter and the Cursed Child",
+        "author": "J.K Rowling",
+        "isbn": "8",
+        "checked_out_to": "3"
+    }
+}
